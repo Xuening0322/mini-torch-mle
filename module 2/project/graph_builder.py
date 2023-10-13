@@ -38,7 +38,7 @@ class GraphBuilder:
         self.intermediates = {}
 
     def get_name(self, x):
-        if not isinstance(x, minitorch.Scalar) and not isinstance(x, minitorch.Tensor):
+        if not isinstance(x, minitorch.Tensor):
             return "constant %s" % (x,)
         elif len(x.name) > 15:
             if x.name in self.intermediates:
@@ -71,9 +71,7 @@ class GraphBuilder:
                     G.add_edge(self.get_name(input), op, f"{i}")
 
                 for input in cur.history.inputs:
-                    if not isinstance(input, minitorch.Scalar) and not isinstance(
-                        input, minitorch.Tensor
-                    ):
+                    if not isinstance(input, minitorch.Tensor):
                         continue
                     queue.append([input])
         return G

@@ -1,5 +1,7 @@
 minitorch/operators.py
 minitorch/module.py
-tests/test_module.py
-tests/test_operators.py
+minitorch/autodiff.py
+minitorch/scalar.py
+minitorch/module.py
 project/run_manual.py
+project/run_scalar.py
